@@ -10,6 +10,8 @@ workspace名の変更
 
 README.mdのタイトルを変更する
 
+pyproject.tomlのnameを更新する
+
 ### 環境準備
 
 仮想環境を作成する
@@ -69,3 +71,4 @@ uvはMozillaの証明書を利用しているため、環境によってはエ�
 pyproject.tomlの存在するフォルダ内で以下コマンドを実行する
 
     uv sync
+
