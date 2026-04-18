@@ -62,7 +62,11 @@ uvはMozillaの証明書を利用しているため、環境によってはエ�
 
 ### パッケージ削除
 
-パッケージを取り除くなら以下
+requirements.txtから追加するなら以下
+
+    uv add -r requirements.txt
+
+パッケージを除外するなら以下
 
     uv remove <パッケージ名>
 
@@ -71,4 +75,3 @@ uvはMozillaの証明書を利用しているため、環境によってはエ�
 pyproject.tomlの存在するフォルダ内で以下コマンドを実行する
 
     uv sync
-
