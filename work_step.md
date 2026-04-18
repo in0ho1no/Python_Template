@@ -12,25 +12,17 @@ README.mdのタイトルを変更する
 
 pyproject.tomlのnameを更新する
 
-### 環境準備
+### UVによる環境作成
 
-仮想環境を作成する
+pyproject.tomlの存在するフォルダ内で以下コマンドを実行することで作成済み環境と同期する
 
-    pipenv --python 3.10
+    uv sync
 
-uvの方が早い
-
-    uv venv --python 3.13
-
-## UVによる環境作成
-
-### 新規作成
-
-適当なフォルダにて以下でプロジェクトを作成する
-
-    uv init <プロジェクト名> -p <Pythonバージョン>
+ライブラリ追加も同時に行う場合、後述の証明書エラーの対応が必要になるケースもある
 
 ### パッケージ追加
+
+#### シンプルな追加手段
 
 パッケージを追加する場合は以下
 
@@ -47,8 +39,6 @@ uvはMozillaの証明書を利用しているため、環境によってはエ�
 
     uv add <パッケージ名> --native-tls
 
-恒久対策する場合は、
-
 #### ローカルパッケージの追加
 
 ローカルのパッケージを直接追加する場合は、`pyproject.toml`に追記する。
@@ -60,18 +50,14 @@ uvはMozillaの証明書を利用しているため、環境によってはエ�
         "package_name @ file:///path/to/package.whl",
     ]
 
-### パッケージ削除
+#### requirementsから追加する場合
 
 requirements.txtから追加するなら以下
 
     uv add -r requirements.txt
 
+### パッケージ削除
+
 パッケージを除外するなら以下
 
     uv remove <パッケージ名>
-
-### 作成済み環境の同期
-
-pyproject.tomlの存在するフォルダ内で以下コマンドを実行する
-
-    uv sync
