@@ -12,6 +12,10 @@ README.mdのタイトルを変更する
 
 pyproject.tomlのnameを更新する
 
+### コミットメッセージのテンプレ
+
+git config --local commit.template ./.github/COMMIT_TEMPLATE.md
+
 ### UVによる環境作成
 
 pyproject.tomlの存在するフォルダ内で以下コマンドを実行することで作成済み環境と同期する
