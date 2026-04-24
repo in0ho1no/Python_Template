@@ -4,23 +4,19 @@
 
 ### テンプレートから作成後に実行する
 
-workspace名の変更
+以下箇所の名称をプロジェクト固有名詞に更新する
 
-    git mv wsXXX.code-workspace wsDST.code-workspace
-
-README.mdのタイトルを変更する
-
-pyproject.tomlのnameを更新する
-
-### コミットメッセージのテンプレ
-
-git config --local commit.template ./git-setup/COMMIT_TEMPLATE
+- workspaceのファイル名
+- README.mdのタイトル
+- pyproject.tomlのname
 
 ### UVによる環境作成
 
 pyproject.tomlの存在するフォルダ内で以下コマンドを実行することで作成済み環境と同期する
 
-    uv sync
+```powershell
+uv sync
+```
 
 ライブラリ追加も同時に行う場合、後述の証明書エラーの対応が必要になるケースもある
 
@@ -30,38 +26,56 @@ pyproject.tomlの存在するフォルダ内で以下コマンドを実行する
 
 パッケージを追加する場合は以下
 
-    uv add <パッケージ名>
+```powershell
+uv add <パッケージ名>
+```
 
 バージョン指定が必要なら以下
 
-    uv add "<パッケージ名>==<バージョン>"
+```powershell
+uv add "<パッケージ名>==<バージョン>"
+```
 
 #### 証明書エラーの対応
 
 uvはMozillaの証明書を利用しているため、環境によってはエラーになる場合がある。
 対策として`--native-tls`フラグと共にコマンドを実行する。
 
-    uv add <パッケージ名> --native-tls
+```powershell
+uv add <パッケージ名> --native-tls
+```
+
+uv syncでエラーが生じる場合も同様である。
+
+```powershell
+uv sync --native-tls
+```
 
 #### ローカルパッケージの追加
 
 ローカルのパッケージを直接追加する場合は、`pyproject.toml`に追記する。
 追記後、内容を反映するために`uv sync`を実行する。
 
-    [project]
-    dependencies = [
-        # 相対パスまたは絶対パスで記述
-        "package_name @ file:///path/to/package.whl",
-    ]
+```text
+[project]
+dependencies = [
+    # 相対パスまたは絶対パスで記述
+    "package_name @ file:///path/to/package.whl",
+]
+```
 
 #### requirementsから追加する場合
 
 requirements.txtから追加するなら以下
 
-    uv add -r requirements.txt
+```powershell
+uv add -r requirements.txt
+```
 
 ### パッケージ削除
 
 パッケージを除外するなら以下
 
+```powershell
     uv remove <パッケージ名>
+```
