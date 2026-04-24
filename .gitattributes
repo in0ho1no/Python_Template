@@ -1,0 +1,23 @@
+# .gitattributes
+
+# テキストファイルはCRLFで統一（Windows環境）
+* text=auto eol=crlf
+
+# バイナリファイルは変換しない（明示的に保護）
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.bmp binary
+*.tiff binary
+*.gif binary
+*.ico binary
+*.exe binary
+*.dll binary
+*.zip binary
+*.xlsx binary
+*.docx binary
+*.pptx binary
+*.pdf binary
+*.mp3 binary
+*.mp4 binary
+*.mov binary
