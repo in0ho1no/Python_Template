@@ -30,11 +30,21 @@ chmod +x git-setup/setup.sh
 
 ※ `chmod +x` は初回のみ必要となる。
 
+#### 環境反映の確認
+
+以下コマンドにより`.gitattributes`の変更を既存ファイルに再適用する。
+
+```powershell
+git add --renormalize .
+```
+
+※ 履歴汚染リスクあるので利用には気を付けること
+
 ### ファイル構成
 
 各ファイルの役割および構成は下記の通り。
 
-```
+```text
 git-setup/
 ├── COMMIT_TEMPLATE   # コミットメッセージのテンプレート
 ├── setup.bat         # Windows 用セットアップスクリプト
