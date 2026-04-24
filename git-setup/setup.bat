@@ -40,11 +40,20 @@ echo [設定] merge.ff
 
 
 rem "---------------------------------------------------"
-rem "目的: 改行コードを Windows 形式(CRLF)に統一する。"
-rem "概要: WindowsとMac環境の混在に対応するため。"
+rem "目的: 改行コードを自動変換しない。"
+rem "概要: .gitattributesにより厳密に制御しているため。"
 rem "---------------------------------------------------"
-git config --local core.autocrlf true
+git config --local core.autocrlf false
 echo [設定] core.autocrlf
+
+
+rem "---------------------------------------------------"
+rem "目的: CRLFとLFが混じったテキストファイルのコミットに警告を出す。"
+rem "概要: CRLFからLFへの変換でファイルが破損するリスクを抑える。"
+rem "補足: 完全禁止は開発が止まりかねないのでtrueではなくwarnとする。"
+rem "---------------------------------------------------"
+git config --local core.safecrlf warn
+echo [設定] core.safecrlf
 
 
 rem "---------------------------------------------------"
