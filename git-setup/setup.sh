@@ -39,10 +39,10 @@ echo "[設定] merge.ff"
 
 
 # ---------------------------------------------------
-# 目的: 改行コードをリポジトリ内ではLFに統一する。
-# 概要: WindowsとMac環境の混在に対応するため。
+# 目的: 改行コードを自動変換しない。
+# 概要: .gitattributesにより厳密に制御しているため。
 # ---------------------------------------------------
-git config --local core.autocrlf input
+git config --local core.autocrlf false
 echo "[設定] core.autocrlf"
 
 
