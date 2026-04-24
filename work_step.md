@@ -14,7 +14,7 @@ pyproject.tomlのnameを更新する
 
 ### コミットメッセージのテンプレ
 
-git config --local commit.template ./.github/COMMIT_TEMPLATE.md
+git config --local commit.template ./git-setup/COMMIT_TEMPLATE
 
 ### UVによる環境作成
 
