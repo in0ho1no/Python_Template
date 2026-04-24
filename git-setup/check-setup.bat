@@ -7,6 +7,7 @@ call :check "fetch.prune"
 call :check "pull.rebase"
 call :check "merge.ff"
 call :check "core.autocrlf"
+call :check "core.safecrlf"
 echo.
 pause
 exit /b

@@ -43,6 +43,22 @@
 *.ps1    text eol=crlf
 
 ###############################################################################
+# 拡張子なし / dotfile
+###############################################################################
+
+.gitattributes                 text eol=lf
+.gitignore                     text eol=lf
+.gitmodules                    text eol=lf
+
+git-setup/COMMIT_TEMPLATE      text eol=lf
+
+# よくある拡張子なしファイル
+Makefile                       text eol=lf
+Dockerfile                     text eol=lf
+LICENSE                        text eol=lf
+README                         text eol=lf
+
+###############################################################################
 # バイナリ（変換・差分対象外）
 # diffノイズ抑制（レビュー効率）
 ###############################################################################
@@ -85,14 +101,15 @@
 # ※ チームルールとセットで運用すること
 ###############################################################################
 
-# Node系
-package-lock.json merge=ours
-yarn.lock         merge=ours
-
-# Python系
-poetry.lock       merge=ours
-Pipfile.lock      merge=ours
-uv.lock           merge=ours
+# 必要な変更を切り捨ててしまう可能性を排除するため、以下明示的に無効化しておく。
+# # Node系
+# package-lock.json merge=ours
+# yarn.lock         merge=ours
+# 
+# # Python系
+# poetry.lock       merge=ours
+# Pipfile.lock      merge=ours
+# uv.lock           merge=ours
 
 ###############################################################################
 # 生成物（差分・言語統計から除外）
