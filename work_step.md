@@ -1,26 +1,64 @@
 # Step of create work enviromental
 
-## 開発
+## テンプレートから作成後に実行する
 
-### テンプレートから作成後に実行する
+以下箇所の名称をプロジェクト固有名詞に更新する
 
-workspace名の変更
+- workspaceのファイル名
+- README.mdのタイトル
+- pyproject.tomlのname
 
-    git mv wsXXX.code-workspace wsDST.code-workspace
+## Git セットアップ
 
-README.mdのタイトルを変更する
+チームで統一した Git 操作を行うためのセットアップスクリプトを用意している。
+リポジトリをクローンしたら、最初に一度だけ実行すること。
 
-pyproject.tomlのnameを更新する
+### 実行方法
 
-### コミットメッセージのテンプレ
+#### Windows の場合
 
-git config --local commit.template ./.github/COMMIT_TEMPLATE.md
+`git-setup/setup.bat` をダブルクリックして実行する。
+
+#### Mac の場合
+
+ターミナルで以下を実行する。
+
+```sh
+chmod +x git-setup/setup.sh
+./git-setup/setup.sh
+```
+
+※ `chmod +x` は初回のみ必要となる。
+
+### ファイル構成
+
+各ファイルの役割および構成は下記の通り。
+
+```
+git-setup/
+├── COMMIT_TEMPLATE   # コミットメッセージのテンプレート
+├── setup.bat         # Windows 用セットアップスクリプト
+└── setup.sh          # Mac 用セットアップスクリプト
+.gitattributes        # 改行コード・バイナリファイルの管理設定
+```
+
+### コミットメッセージについて
+
+`git-setup/COMMIT_TEMPLATE`をテンプレートとして設定している。  
+`git commit`時にエディタが開き、書き方の雛形が表示される。  
+
+※ `-m` オプションを使用するとテンプレートは表示されない。
+※ ユーザのコメントを上書することはしない。一度クリアしたり、何か入力されていたリするときは表示されない。
+
+## Python専用環境の作成
 
 ### UVによる環境作成
 
 pyproject.tomlの存在するフォルダ内で以下コマンドを実行することで作成済み環境と同期する
 
-    uv sync
+```powershell
+uv sync
+```
 
 ライブラリ追加も同時に行う場合、後述の証明書エラーの対応が必要になるケースもある
 
@@ -30,38 +68,56 @@ pyproject.tomlの存在するフォルダ内で以下コマンドを実行する
 
 パッケージを追加する場合は以下
 
-    uv add <パッケージ名>
+```powershell
+uv add <パッケージ名>
+```
 
 バージョン指定が必要なら以下
 
-    uv add "<パッケージ名>==<バージョン>"
+```powershell
+uv add "<パッケージ名>==<バージョン>"
+```
 
 #### 証明書エラーの対応
 
 uvはMozillaの証明書を利用しているため、環境によってはエラーになる場合がある。
 対策として`--native-tls`フラグと共にコマンドを実行する。
 
-    uv add <パッケージ名> --native-tls
+```powershell
+uv add <パッケージ名> --native-tls
+```
+
+uv syncでエラーが生じる場合も同様である。
+
+```powershell
+uv sync --native-tls
+```
 
 #### ローカルパッケージの追加
 
 ローカルのパッケージを直接追加する場合は、`pyproject.toml`に追記する。
 追記後、内容を反映するために`uv sync`を実行する。
 
-    [project]
-    dependencies = [
-        # 相対パスまたは絶対パスで記述
-        "package_name @ file:///path/to/package.whl",
-    ]
+```text
+[project]
+dependencies = [
+    # 相対パスまたは絶対パスで記述
+    "package_name @ file:///path/to/package.whl",
+]
+```
 
 #### requirementsから追加する場合
 
 requirements.txtから追加するなら以下
 
-    uv add -r requirements.txt
+```powershell
+uv add -r requirements.txt
+```
 
 ### パッケージ削除
 
 パッケージを除外するなら以下
 
+```powershell
     uv remove <パッケージ名>
+```
