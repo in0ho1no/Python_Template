@@ -101,15 +101,16 @@ README                         text eol=lf
 # ※ チームルールとセットで運用すること
 ###############################################################################
 
-# 必要な変更を切り捨ててしまう可能性を排除するため、以下明示的に無効化しておく。
-# # Node系
-# package-lock.json merge=ours
-# yarn.lock         merge=ours
-# 
-# # Python系
-# poetry.lock       merge=ours
-# Pipfile.lock      merge=ours
-# uv.lock           merge=ours
+# 必要な変更を切り捨ててしまう可能性を排除する。
+# merge=oursを誤って指定しないよう、以下明示的に無効化しておく。
+# Node系
+package-lock.json -merge
+yarn.lock         -merge
+
+# Python系
+poetry.lock       -merge
+Pipfile.lock      -merge
+uv.lock           -merge
 
 ###############################################################################
 # 生成物（差分・言語統計から除外）
