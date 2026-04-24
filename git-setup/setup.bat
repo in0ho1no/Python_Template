@@ -8,42 +8,49 @@ echo.
 
 
 rem "---------------------------------------------------"
-rem "コミットメッセージのテンプレートを設定します。"
-rem "git commit 時にエディタへ書き方の雛形が表示されます。"
+rem "目的: コミットメッセージのテンプレートを設定する。"
+rem "概要: git commit時にエディタへテンプレを表示するため。"
 rem "---------------------------------------------------"
-git config --local commit.template git-setup/COMMIT_TEMPLATE.md
+git config --local commit.template git-setup/COMMIT_TEMPLATE
 echo [設定] コミットテンプレート
 
 
 rem "---------------------------------------------------"
-rem "fetch 時にリモートで削除済みのブランチを"
-rem "ローカルからも自動で削除します。"
+rem "目的: fetch時にリモートで削除済みのブランチをローカルからも削除する。"
+rem "概要: ブランチの扱いで混乱が生じるのを避けるため。"
 rem "---------------------------------------------------"
 git config --local fetch.prune true
 echo [設定] fetch.prune
 
 
 rem "---------------------------------------------------"
-rem "git pull 時にマージコミットを作成します。"
-rem "誰がいつ変更を取り込んだかを履歴に残すためです。"
+rem "目的: git pull時にマージコミットを作成する。"
+rem "概要: 誰がいつ変更を取り込んだかを履歴に残すため。"
 rem "---------------------------------------------------"
 git config --local pull.rebase false
 echo [設定] pull.rebase
 
 
 rem "---------------------------------------------------"
-rem "git merge 時に fast-forward を行わず、"
-rem "必ずマージコミットを作成します。"
-rem "ブランチ単位の作業履歴を明確に残すためです。"
+rem "目的: git merge時にfast-forwardを行わず、必ずマージコミットを作成する。"
+rem "概要: ブランチ単位の作業履歴を明確に残すため。"
 rem "---------------------------------------------------"
 git config --local merge.ff false
 echo [設定] merge.ff
 
 
 rem "---------------------------------------------------"
-rem "WinMerge がインストールされている場合のみ、"
-rem "git windiff コマンドを使えるように設定します。"
-rem "インストールされていない場合はスキップします。"
+rem "目的: 改行コードを Windows 形式(CRLF)に統一する。"
+rem "概要: WindowsとMac環境の混在に対応するため。"
+rem "---------------------------------------------------"
+git config --local core.autocrlf true
+echo [設定] core.autocrlf
+
+
+rem "---------------------------------------------------"
+rem "目的: git windiffコマンドを使えるようにする。"
+rem "概要: WinMergeによる差分比較ができるようにするため。"
+rem "補足: デフォルトパスに見つからない場合はスキップする。"
 rem "---------------------------------------------------"
 set WINMERGE=C:\Program Files\WinMerge\WinMergeU.exe
 if exist "%WINMERGE%" (

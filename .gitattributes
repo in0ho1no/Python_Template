@@ -1,7 +1,8 @@
 # .gitattributes
 
-# テキストファイルはCRLFで統一（Windows環境）
-* text=auto eol=crlf
+# テキストファイルの改行コードを自動判定して変換する
+# Windows メンバーは CRLF、Mac/Linux メンバーは LF でチェックアウトされる
+* text=auto
 
 # バイナリファイルは変換しない（明示的に保護）
 *.png binary
@@ -11,13 +12,23 @@
 *.tiff binary
 *.gif binary
 *.ico binary
+
 *.exe binary
 *.dll binary
+
 *.zip binary
+*.tar binary
+*.gz binary
+*.7z binary
+
 *.xlsx binary
+*.xls binary
 *.docx binary
+*.doc binary
 *.pptx binary
+*.ppt binary
 *.pdf binary
+
 *.mp3 binary
 *.mp4 binary
 *.mov binary
