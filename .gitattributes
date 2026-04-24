@@ -42,6 +42,7 @@
 
 ###############################################################################
 # バイナリ（変換・差分対象外）
+# diffノイズ抑制（レビュー効率）
 ###############################################################################
 
 # 画像
@@ -64,27 +65,18 @@
 *.7z binary
 
 # Office / PDF
-*.xlsx binary
-*.xls binary
-*.docx binary
-*.doc binary
-*.pptx binary
-*.ppt binary
-*.pdf binary
+*.xlsx binary -diff
+*.xls binary -diff
+*.docx binary -diff
+*.doc binary -diff
+*.pptx binary -diff
+*.ppt binary -diff
+*.pdf binary -diff
 
 # メディア
 *.mp3 binary
 *.mp4 binary
 *.mov binary
-
-###############################################################################
-# diffノイズ抑制（レビュー効率）
-###############################################################################
-
-*.pdf  -diff
-*.xlsx -diff
-*.docx -diff
-*.pptx -diff
 
 ###############################################################################
 # マージ戦略（コンフリクト回避）
@@ -98,6 +90,7 @@ yarn.lock         merge=ours
 # Python系
 poetry.lock       merge=ours
 Pipfile.lock      merge=ours
+uv.lock           merge=ours
 
 ###############################################################################
 # 生成物（差分・言語統計から除外）
