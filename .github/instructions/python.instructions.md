@@ -1,23 +1,10 @@
 ---
-applyTo: "**/*.py"
+applyTo: "src/**/*.py"
+description: "Python ファイルを編集・作成・レビューするときに使う。uv、型ヒント、pathlib、pyproject 準拠の補足ルール。"
 ---
- 
-# コーディング時の注意点
 
-- コーディング規約（型ヒント・docstringスタイル・命名規則など）は `pyproject.toml` に定義されているため参照すること
-- ツールで自動検出できないルールとして、必要な変数には型ヒントを付けること
-- uvで仮想環境を構築してあるので、Pythonスクリプトを実行する場合は`uv run`を利用する
-- ファイルパスの操作は `os.path` ではなく `pathlib.Path` を使用する
-
-# コード品質チェック
-
-- Ruff（lint）: `uv run ruff check src/`
-- Ruff（format）: `uv run ruff format src/`
-- mypy: `uv run mypy src/`
-- コード変更後は必ず上記を実行してエラーがないことを確認する
-
-# テスト
-
-- テストフレームワークは pytest を使用する
-- テストファイルは `src/tests/` ディレクトリに配置し、`test_*.py` の命名規則に従う
-- 実行: `uv run pytest`
+- コーディング規約の正本は pyproject.toml とし、競合時はそちらを優先する
+- Python の実行や検証は uv run を使う
+- パッケージ追加は勝手に行わず、必要時はユーザー確認のうえ uv add を使う
+- ファイルパスの操作は os.path ではなく pathlib.Path を使う
+- 必要な変数や関数には型ヒントを付ける
