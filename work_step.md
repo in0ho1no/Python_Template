@@ -1,4 +1,4 @@
-# Step of create work enviromental
+# 環境構築手順
 
 ## テンプレートから作成後に実行する
 
@@ -77,5 +77,5 @@ uv add -r requirements.txt
 パッケージを除外するなら以下
 
 ```powershell
-    uv remove <パッケージ名>
+uv remove <パッケージ名>
 ```
