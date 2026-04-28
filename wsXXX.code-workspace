@@ -29,14 +29,29 @@
 		// GitLensのCurrent Line Blame(カーソル行に表示される履歴情報)を無効化
 		"gitlens.currentLine.enabled": false,
 
-		// 自動補完を無効化
-		"editor.suggestOnTriggerCharacters": false,
-		"editor.wordBasedSuggestions": "off",
+		// Copilot のコード提案は無効化しつつ、通常のサジェストは利用する
+		"github.copilot.enable": {
+			"*": false
+		},
+		"editor.suggestOnTriggerCharacters": true,
+		"editor.wordBasedSuggestions": "matchingDocuments",
 		"editor.inlineSuggest.enabled": false,
 		"editor.quickSuggestions": {
-			"other": "off",
+			"other": true,
 			"comments": "off",
 			"strings": "off",
 		},
+
+		// 編集時の見通しを良くする
+		"editor.rulers": [120],
+		"editor.tabSize": 4,
+		"editor.matchBrackets": "always",
+		"editor.bracketPairColorization.enabled": true,
+		"editor.guides.bracketPairs": true,
+		"editor.guides.highlightActiveBracketPair": true,
+		"editor.guides.indentation": true,
+		"editor.guides.highlightActiveIndentation": true,
+		"editor.stickyScroll.enabled": true,
+		"editor.showFoldingControls": "always",
 	}
 }
