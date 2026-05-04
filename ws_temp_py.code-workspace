@@ -14,20 +14,7 @@
 		},
 
 		// フォント設定
-		"editor.fontFamily": "Consolas, 'Meiryo UI','Courier New', monospace",
-
-		"editor.defaultFormatter": "charliermarsh.ruff",
-		"editor.formatOnSave": true,
-		"editor.codeActionsOnSave": {
-			"source.fixAll": "explicit",
-		},
-
-		"autoDocstring.docstringFormat": "google",
-
-		// VSCode標準のGit blame(行末に表示される最終コミット情報)を無効化
-		"git.blame.editorDecoration.enabled": false,
-		// GitLensのCurrent Line Blame(カーソル行に表示される履歴情報)を無効化
-		"gitlens.currentLine.enabled": false,
+		"editor.fontFamily": "Consolas, 'Cascadia Mono', 'SF Mono', Menlo, Monaco, 'Courier New', monospace",
 
 		// Copilot のコード提案は無効化しつつ、通常のサジェストは利用する
 		"github.copilot.enable": {
@@ -38,8 +25,8 @@
 		"editor.inlineSuggest.enabled": false,
 		"editor.quickSuggestions": {
 			"other": true,
-			"comments": "off",
-			"strings": "off",
+			"comments": false,
+			"strings": false
 		},
 
 		// 編集時の見通しを良くする
@@ -53,5 +40,15 @@
 		"editor.guides.highlightActiveIndentation": true,
 		"editor.stickyScroll.enabled": true,
 		"editor.showFoldingControls": "always",
+		"editor.wordSeparators": "./\\()\"'-:,.;<>~!@# ○$%^&*|+=[]{}`~?．。，、（）「」［］｛｝《》『』【】てにをはがのともへでや",
+
+		// Python settings
+		"editor.defaultFormatter": "charliermarsh.ruff",
+		"editor.formatOnSave": true,
+		"editor.codeActionsOnSave": {
+			"source.fixAll": "explicit",
+		},
+
+		"autoDocstring.docstringFormat": "google",
 	}
 }
