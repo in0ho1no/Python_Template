@@ -5,6 +5,6 @@
         "ms-python.mypy-type-checker",  // Python型チェック
         "ms-python.python",  // Python環境
         "ms-python.debugpy",  // Pythonデバッグ用
-        "charliermarsh.ruff"  // Python lint formatter用
+        "charliermarsh.ruff",  // Python lint formatter用
     ]
 }
