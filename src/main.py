@@ -1,15 +1,21 @@
-"""Example module."""
+"""テンプレート挙動確認用のサンプルモジュール。
+
+このファイルはテンプレートの動作確認用です。
+このテンプレートをベースに構築された環境では、このファイル内を自由に編集して構いません。
+"""
 
 
 def function_example(arg1: str, arg2: int) -> None:
-    """Example function that takes a string and an integer as arguments."""
+    """テンプレート確認用の引数付きサンプル関数。"""
     print(f'arg1: {arg1}, arg2: {arg2}')
 
 
 def main() -> None:
-    """Main function."""
-    print('Hello, World!')
-    function_example('hello world', 42)
+    """テンプレート確認用メッセージを表示する。"""
+    print('Pythonテンプレートの挙動確認')
+    print('このファイルはテンプレート確認用です。')
+    print('このテンプレートをベースにした環境では、このファイルを自由に編集して構いません。')
+    function_example('テンプレートサンプル', 42)
 
 
 if __name__ == '__main__':
