@@ -9,6 +9,10 @@ tools:
   - search
   - execute
   - github/*
+handoffs:
+    - label: Review レビュー観点を深掘りする
+      agent: Python Review
+      prompt: 診断結果を踏まえて、変更点や関連ファイルのレビューを行い、バグ・回帰リスク・テスト不足を指摘してください。
 argument-hint: >-
   診断対象のパス、見たいブランチやPR、重点的に見たい観点を必要に応じて指定する
 ---
