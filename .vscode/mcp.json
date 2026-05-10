@@ -1,0 +1,16 @@
+{
+    // MCP(Model Context Protocol)を利用しない場合は本ファイルごと削除すること。
+    // 参考: https://docs.github.com/copilot/customizing-copilot/using-model-context-protocol
+    // 利用したい場合は以下コメントアウトを外すこと。
+
+//    "servers": {
+//        // GitHub Copilot Chat の Agent モードで GitHub MCP サーバを利用するための設定。
+//        // Issue作成・PR確認・Actions状態取得など
+//        // GitHub上の操作をCopilot Chatから直接行えるようになる。
+//        "my-mcp-server-github": {
+//            "url": "https://api.githubcopilot.com/mcp/",
+//            "type": "http"
+//        }
+//    },
+//    "inputs": []
+}
