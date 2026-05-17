@@ -1,6 +1,6 @@
 [project]
 name = "XXXX"
-version = "0.1.0"
+version = "0.0.1"
 description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.12"
@@ -105,4 +105,5 @@ exclude = [
 ]
 
 [tool.pytest.ini_options]
+pythonpath = ["src"]
 testpaths = ["src/tests"]
