@@ -1,5 +1,5 @@
 ---
-name: python-quality
+name: sk-python-quality
 description: >-
   Pythonコードの静的解析を行い品質を確認する。
   「コードをチェックして」「品質確認して」「ruffで見て」「mypyで型チェック」「pyrightで見て」「Lintして」
