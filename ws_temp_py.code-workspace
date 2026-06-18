@@ -53,10 +53,10 @@
 
 		"chat.tools.terminal.autoApprove": {
 			// Python用許可設定
-			"uv run ruff": true,
-			"uv run mypy": true,
-			"uv run pyright": true,
-			"uv run pytest": true,
+			"/^uv run ruff\\b/i": true,
+			"/^uv run mypy\\b/i": true,
+			"/^uv run pyright\\b/i": true,
+			"/^uv run pytest\\b/i": true,
 		},
 	}
 }

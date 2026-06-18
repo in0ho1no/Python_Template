@@ -6,7 +6,7 @@ description: >-
   「品質チェックして直して」「ruffとmypyで修正まで」「エラーを全部直して」
   のように品質チェックと修正を一括で依頼されたときに使うこと。
 tools:
-  - bash
+  - execute
   - read
   - edit
   - search
