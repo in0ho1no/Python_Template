@@ -16,6 +16,14 @@ uv sync
 
 ライブラリ追加も同時に行う場合、後述の証明書エラーの対応が必要になるケースもある
 
+### pyright が使う Node.js
+
+pyright は、[mise.toml](mise.toml) で固定した Node.js を PATH から使う。
+後述の「依存の更新監視」の手順で Node.js を導入し、mise の shims フォルダ (Windows の既定は `%LOCALAPPDATA%\mise\shims`) を PATH に追加するか、シェルで `mise activate` を有効にする。
+管理外の Node.js を使わないよう、pyright が Node.js を自動取得する nodeenv は依存から除外している。
+PATH に `node` がない場合、pyright は `nodeenv failed` で失敗する。表示される `pyright[nodejs]` の導入案内には従わず、PATH を確認する。
+以前に作られた `~/.cache/pyright-python/nodeenv` が残っていると、PATH に `node` がないときにその Node.js が使われるため、削除する。
+
 ### パッケージ追加
 
 #### シンプルな追加手段

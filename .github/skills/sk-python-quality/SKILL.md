@@ -74,7 +74,8 @@ ruff・mypy・pyrightを使ってPythonコードを静的解析し、問題点�
 <ランナー> pyright <対象パス>
 ```
 
-- pyrightが見つからない場合はユーザーの環境に応じたインストール方法を案内して終了する(例: `uv add --dev "pyright[nodejs]"` / `pip install pyright`)
+- pyrightが見つからない場合はユーザーの環境に応じたインストール方法を案内して終了する(例: `uv add --dev pyright` / `pip install pyright`)
+- pyrightはmiseで固定したNode.jsをPATHから使う。PATHに`node`がないと`nodeenv failed`で失敗する。このとき表示される`pyright[nodejs]`の導入案内には従わず、`intro_temp_py.md`に沿ってmiseとPATHの準備状況を確認し、未実行として報告する
 - `pyproject.toml` の `[tool.pyright]` セクションがあれば自動的に読み込まれる
 
 ## レポート形式
