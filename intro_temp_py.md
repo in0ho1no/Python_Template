@@ -75,3 +75,24 @@ uv add -r requirements.txt
 ```powershell
 uv remove <パッケージ名>
 ```
+
+## 依存の更新監視
+
+依存の更新漏れを防ぐため、毎週金曜 17:30 (Asia/Tokyo) に次の確認を行う。
+
+- Dependabot が GitHub Actions と Python 依存 (uv) の更新を PR にする。設定は [dependabot.yml](.github/dependabot.yml) を参照する。
+- [Node.js Version](.github/workflows/node-version.yml) が [mise.toml](mise.toml) で固定した Node.js を同じメジャーの最新版と比べ、新しい版があれば Issue を作成・更新する。
+
+テンプレートから新しい環境を作成したときは、`mise.toml` のあるフォルダで次を実行する。
+
+```powershell
+mise trust
+mise install
+```
+
+`mise install` は `mise.toml` で固定した Node.js を導入する。
+現在の `mise.toml` は `[tools]` に版だけを書いているため、mise の仕様上は信頼しなくても読み込まれる。
+環境変数の設定など、コードを実行したり環境に影響したりする設定を追加すると信頼が必要になるため、作成時に `mise trust` も実行しておく。
+
+定期実行は既定ブランチにある workflow だけが起動し、既定ブランチの `mise.toml` を確認する。
+公開リポジトリでは、60日間リポジトリの活動がないと定期実行が自動で停止する。書き込み権限を持つ利用者のコミットで再開する。
