@@ -3,23 +3,27 @@ name = "XXXX"
 version = "0.1.0"  # Major.Minor.Patch
 description = "Add your description here"
 readme = "README.md"
-requires-python = ">=3.12"
+requires-python = ">=3.14"
 dependencies = [
 ]
 
 [dependency-groups]
 dev = [
     "mypy>=1.20.1",
-    "pyright[nodejs]>=1.1.409",
+    "pyright>=1.1.409",
     "pytest>=9.0.3",
     "ruff>=0.15.11",
 ]
+
+[tool.uv]
+# pyright は PATH 上の node が見つからないと nodeenv で Node.js を自動取得するため、mise で固定した版以外を使わせないよう除外する
+exclude-dependencies = ["nodeenv"]
 
 [tool.ruff]
 # 1行の最大文字数
 line-length = 150
 # 対応するPythonバージョンを指定し、バージョンに応じたLint/Formatを可能にする
-target-version = "py312"
+target-version = "py314"
 # Lint/Formatの対象から除外するファイル/ディレクトリ
 exclude = [
     ".git",
@@ -92,6 +96,8 @@ skip-magic-trailing-comma = false
 line-ending = "auto"
 
 [tool.mypy]
+# 型チェックで前提とするPythonのバージョン (.python-version・ruff・pyrightと揃える)
+python_version = "3.14"
 # Any型を返す関数の戻り値に対して警告する
 warn_return_any = true
 # 型ヒントが付与されていない関数定義をエラーとする
@@ -124,7 +130,7 @@ exclude = [
     "**/node_modules",
     "docs/source/conf.py",
 ]
-pythonVersion = "3.12"
+pythonVersion = "3.14"
 pythonPlatform = "All"
 typeCheckingMode = "standard"
 reportMissingTypeStubs = false

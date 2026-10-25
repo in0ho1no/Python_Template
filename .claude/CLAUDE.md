@@ -22,6 +22,7 @@
 - mypy: `uv run mypy src/`
 - pyright: `uv run pyright src/`
 - コード変更後は必ず上記を実行してエラーがないことを確認する
+- pyright は mise で固定した Node.js を PATH から使う。`nodeenv failed` で失敗した場合は `pyright[nodejs]` の導入案内に従わず、`intro_temp_py.md` に沿って mise と PATH を確認する
 
 ### テスト
 
