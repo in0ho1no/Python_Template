@@ -14,6 +14,9 @@ pyproject.tomlの存在するフォルダ内で以下コマンドを実行する
 uv sync
 ```
 
+Python は [.python-version](.python-version) で 3.14 系に固定している。`uv sync` は 3.14 系の Python で仮想環境を作成する。
+pyproject.toml の requires-python と、ruff・mypy・pyright が前提とする版も 3.14 に揃えている。
+
 ライブラリ追加も同時に行う場合、後述の証明書エラーの対応が必要になるケースもある
 
 ### pyright が使う Node.js
