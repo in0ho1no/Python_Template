@@ -84,6 +84,18 @@ uv add -r requirements.txt
 uv remove <パッケージ名>
 ```
 
+## CI
+
+pull request と `main` への push で、[Tests](.github/workflows/tests.yml) が次を実行する。
+
+- mise で固定した Node.js と uv を導入し、`uv sync` で依存を同期する。
+- ruff・mypy・pyright・pytest を実行する。
+- `mise.toml` の Node.js より新しい版があれば、失敗にせず警告を表示する。
+
+テンプレートでは `uv.lock` を管理しないため、CI は実行時点の最新の依存で検証する。
+テンプレートから作成したプロジェクトでは `uv.lock` をコミットし、Tests の `uv sync` に `--locked` を付ける。
+`tests` を必須チェックにする場合は、GitHub のブランチ保護またはルールセットで設定する。
+
 ## 依存の更新監視
 
 依存の更新漏れを防ぐため、毎週金曜 17:30 (Asia/Tokyo) に次の確認を行う。
