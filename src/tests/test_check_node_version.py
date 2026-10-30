@@ -50,7 +50,7 @@ def test_only_newer_releases_of_the_pinned_major_are_reported() -> None:
 
 
 def test_prereleases_are_ignored() -> None:
-    index = _INDEX + [{'version': 'v27.0.0-alpha.0.0.0', 'date': '2026-10-30', 'security': False}]
+    index = [*_INDEX, {'version': 'v27.0.0-alpha.0.0.0', 'date': '2026-10-30', 'security': False}]
 
     releases = check_node_version.newer_releases((24, 2, 0), index)
 
