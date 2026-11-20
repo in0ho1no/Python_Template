@@ -10,7 +10,7 @@ import tomllib
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any, cast
-from urllib.request import urlopen
+from urllib.request import HTTPDefaultErrorHandler, HTTPErrorProcessor, HTTPRedirectHandler, HTTPSHandler, OpenerDirector, ProxyHandler
 
 ROOT = Path(__file__).resolve().parents[2]
 _VERSION = re.compile(r'v?(\d+)\.(\d+)\.(\d+)')
@@ -103,8 +103,16 @@ def load_index(index_file: Path | None) -> Index:
     """公開版の一覧を、指定されたファイルまたは nodejs.org から読み込む。"""
     if index_file is not None:
         return cast(Index, json.loads(index_file.read_text(encoding='utf-8')))
-    # URL を引数で受け取らないのは、取得先を公式の一覧に限定するため。
-    with urlopen('https://nodejs.org/dist/index.json', timeout=30) as response:
+
+    # urlopen は file:// なども開けるため使わず、プロキシ・HTTPS・リダイレクト・HTTP エラー処理だけを登録する。
+    # HTTPHandler を登録しないので、リダイレクト先も HTTPS に限られる。
+    opener = OpenerDirector()
+    opener.add_handler(ProxyHandler())
+    opener.add_handler(HTTPSHandler())
+    opener.add_handler(HTTPRedirectHandler())
+    opener.add_handler(HTTPDefaultErrorHandler())
+    opener.add_handler(HTTPErrorProcessor())
+    with opener.open('https://nodejs.org/dist/index.json', timeout=30) as response:
         return cast(Index, json.load(response))
 
 
