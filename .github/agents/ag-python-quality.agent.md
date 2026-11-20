@@ -16,11 +16,11 @@ argument-hint: >-
 
 # Python品質チェック・修正エージェント
 
-このAgentは、既存のSkill `sk-python-quality` を実行手順の正本として利用する。
+このAgentは、共通Skillを実行手順の正本として利用する。
 
 ## 実行ルール
 
-1. 作業開始時に `.github/skills/sk-python-quality/SKILL.md` を読み、そこに定義された手順・判定基準・レポート形式に従う。
+1. 作業開始時に `AGENTS.md` と `.agents/skills/sk-python-quality/SKILL.md` を読み、定義された手順・判定基準・レポート形式に従う。
 2. このファイルに手順を重複記載しない。実行手順の更新はSkill側のみで行う。
 3. Agent側は「修正まで実施する運用方針」だけを追加で適用する。
 
