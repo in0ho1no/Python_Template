@@ -6,7 +6,7 @@
 
 import pytest
 
-from main import function_example, main
+from xxxx.main import function_example, main
 
 
 class TestFunctionExample:
