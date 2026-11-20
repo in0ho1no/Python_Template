@@ -75,17 +75,17 @@ uv run pyright <対象パス>
 ## Python品質チェック結果
 
 ### 🔴 ruff check
-- `src/main.py:12` E501 行が長すぎます(160文字 > 150文字)
-- `src/utils.py:34` F401 `os`がインポートされているが使用されていません
+- `src/xxxx/main.py:12` E501 行が長すぎます(160文字 > 150文字)
+- `src/xxxx/utils.py:34` F401 `os`がインポートされているが使用されていません
 
 ### 🔵 ruff format
-- `src/utils.py` フォーマットが必要です
+- `src/xxxx/utils.py` フォーマットが必要です
 
 ### 🟡 mypy
-- `src/main.py:8` error: 引数の型が一致しません (expected "str", got "int")
+- `src/xxxx/main.py:8` error: 引数の型が一致しません (expected "str", got "int")
 
 ### 🟡 pyright
-- `src/main.py:8` Argument of type "Literal[1]" cannot be assigned to parameter of type "str"
+- `src/xxxx/main.py:8` Argument of type "Literal[1]" cannot be assigned to parameter of type "str"
 
 ### ✅ サマリー
 | ツール        | 件数 |
