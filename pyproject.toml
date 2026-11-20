@@ -16,6 +16,9 @@ dev = [
 ]
 
 [tool.uv]
+# 公開直後のパッケージは悪意のある版や不安定な版の可能性があるため、公開から7日経つまで依存解決に使わない
+# Semgrep の検出規則はこの節の最初の角括弧より前しか見ないため、配列を含む設定より前に置く
+exclude-newer = "7 days"
 # pyright は PATH 上の node が見つからないと nodeenv で Node.js を自動取得するため、mise で固定した版以外を使わせないよう除外する
 exclude-dependencies = ["nodeenv"]
 
