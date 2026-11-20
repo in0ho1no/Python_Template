@@ -5,6 +5,10 @@
 以下更新すること。
 
 - pyproject.tomlのname
+- 仮のパッケージ名 `xxxx`。name に合わせて次の箇所を変更する
+  - [src/xxxx/](src/xxxx/) のフォルダ名
+  - [tests/xxxx/](tests/xxxx/) のフォルダ名と、[test_main.py](tests/xxxx/test_main.py) の `from xxxx.main import`
+  - [.vscode/launch.json](.vscode/launch.json) の `program`
 
 ### UVによる環境作成
 
