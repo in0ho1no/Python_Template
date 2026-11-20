@@ -1,5 +1,5 @@
 ---
-applyTo: "src/tests/**/*.py"
+applyTo: "**/tests/**/*.py"
 description: "Python の pytest ベースのテストファイルを編集・作成するときの補足ルール。"
 ---
 

@@ -77,6 +77,7 @@ ignore = [
 "__init__.py" = ["F401"]
 # テストコードではクラス/メソッドごとの docstring を必須にしない
 "src/tests/**/*.py" = ["D101", "D102", "D103", "D415"]
+"scripts/tests/**/*.py" = ["D101", "D102", "D103", "D415"]
 # docs/source/conf.py ファイルでは、E402 (モジュールレベルのimportがファイルの先頭にない) エラーを無視する
 # (sys.pathの変更後にimportを行う場合など)
 "docs/source/conf.py" = ["E402"]
@@ -140,5 +141,5 @@ venvPath = "."
 venv = ".venv"
 
 [tool.pytest.ini_options]
-pythonpath = ["src"]
-testpaths = ["src/tests"]
+pythonpath = ["src", "."]
+testpaths = ["src/tests", "scripts/tests"]
