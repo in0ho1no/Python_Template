@@ -19,7 +19,7 @@ Python のコード・テスト・設定 (`src/`、`scripts/`、`tests/`、`pypr
 
 - Python の実行・検証には `uv run` を使う
 - パッケージ追加はユーザーの承認を得てから `uv add` で行い、pip コマンドを直接使わない
-- コーディング規約の正本は `pyproject.toml` とする
+- コーディング規約の正本は `pyproject.toml` とし、他の記述と食い違う場合は `pyproject.toml` を優先する
 - 必要な変数や関数には型ヒントを付ける
 - ファイルパス操作には `os.path` ではなく `pathlib.Path` を使う
 - broad catch やエラーの握りつぶしを避け、失敗は明示的に報告する
@@ -41,7 +41,7 @@ Python のコード・テスト・設定 (`src/`、`scripts/`、`tests/`、`pypr
 
 ### Skill と Agent
 
-- Python コードの品質確認や修正には `sk-python-quality` Skill (`.agents/skills/sk-python-quality/SKILL.md`) を使う
+- Python コードを変更したら、完了を報告する前に必ず `sk-python-quality` Skill (`.agents/skills/sk-python-quality/SKILL.md`) で品質を確認する。品質確認や修正を頼まれたときも、この Skill を使う
 - Python コードのレビューには `sk-python-review` Skill (`.agents/skills/sk-python-review/SKILL.md`) を使う
 - `.claude/` と `.github/` にある Python 用の Skill・Agent はツール別のアダプターで、手順の正本は `.agents/skills/` とする
 - Python 向けの規約や手順を変更するときは、このセクションまたは `.agents/skills/` を更新し、アダプターへ内容を複製しない
