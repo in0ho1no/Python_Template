@@ -6,9 +6,9 @@ from pathlib import Path
 
 import pytest
 
-from scripts import check_node_version
+from scripts.check_node_version import check_node_version
 
-_REPOSITORY = Path(__file__).resolve().parents[2]
+_REPOSITORY = Path(__file__).resolve().parents[3]
 # 実在の公開履歴ではなく、メジャーの違い・セキュリティ版・順序を確かめるための一覧。
 _INDEX = [
     {'version': 'v26.1.0', 'date': '2026-10-21', 'security': True},

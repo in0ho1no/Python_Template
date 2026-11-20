@@ -25,11 +25,11 @@ jobs:
         # テンプレートでは uv.lock を管理しないため、--locked を付けずに実行時点の最新版で解決する。
         run: uv sync
       - name: Lint
-        run: uv run --frozen ruff check src scripts
+        run: uv run --frozen ruff check src scripts tests
       - name: Check formatting
-        run: uv run --frozen ruff format --check src scripts
+        run: uv run --frozen ruff format --check src scripts tests
       - name: Type check with mypy
-        run: uv run --frozen mypy src scripts
+        run: uv run --frozen mypy src scripts tests
       - name: Type check with pyright
         run: uv run --frozen pyright
       - name: Test
@@ -38,7 +38,7 @@ jobs:
         # 新しい Node.js の公開は PR の内容と無関係なため、失敗にせず警告に留める。
         run: |
           status=0
-          uv run --frozen python scripts/check_node_version.py || status=$?
+          uv run --frozen python scripts/check_node_version/check_node_version.py || status=$?
           if [ "$status" -ne 0 ]; then
             echo "::warning title=Node.js::mise.toml の Node.js より新しい版があるか、確認に失敗しました。Node.js Version workflow の Issue を確認してください。"
           fi
