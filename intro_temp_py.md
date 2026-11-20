@@ -119,3 +119,30 @@ mise install
 
 定期実行は既定ブランチにある workflow だけが起動し、既定ブランチの `mise.toml` を確認する。
 公開リポジトリでは、60日間リポジトリの活動がないと定期実行が自動で停止する。書き込み権限を持つ利用者のコミットで再開する。
+
+## AIエージェント設定
+
+Claude Code、GitHub Copilot、Codex、Antigravity の4つで同じ規約が使えるように、正本を1か所に集めている。
+
+| ファイル | 役割 | 読み込むツール |
+|---|---|---|
+| [AGENTS.md](AGENTS.md) | Python 規約の正本 (Python セクション1つだけ) | Copilot、Codex、Antigravity は直接読む。Claude は `.claude/CLAUDE.md` の import 経由で読む |
+| [.claude/CLAUDE.md](.claude/CLAUDE.md) | `@../AGENTS.md` を import するだけのファイル | Claude |
+| `.agents/skills/sk-python-*/` | Skill 手順の正本 | Codex、Antigravity |
+| `.claude/skills/sk-python-*/`、`.github/skills/sk-python-*/` | 正本を参照するだけの Skill アダプター | Claude、Copilot |
+| `.claude/agents/`、`.github/agents/` | ツール別の Agent 定義 (モデル・権限だけを持つ) | Claude、Copilot |
+
+規約や手順を変更するときは、`AGENTS.md` か `.agents/skills/` の正本を更新し、アダプターへ内容を複製しない。
+`GEMINI.md` は作らない。Antigravity は `AGENTS.md` と `GEMINI.md` を両方読むため、重複して読み込まれる。
+
+### 他テンプレートとの統合
+
+このテンプレートは [integlate_template](https://github.com/in0ho1no/integlate_template) で他のテンプレートと組み合わせて使う前提で、次のように作っている。
+
+- `AGENTS.md` は `BEGIN TEMPLATE` / `END TEMPLATE` コメントで囲んだ Python セクションだけを持つ。共通規約を持つ Git_Template の `AGENTS.md` の後ろに追記しても、意味が衝突しない
+- `.claude/CLAUDE.md` は Git_Template と同じ内容にしている
+- Skill・Agent はファイル名に `python` を含めて、他テンプレートと名前が衝突しないようにしている
+- `.github/copilot-instructions.md` は置かない。Copilot は `AGENTS.md` を直接読む
+
+統合ツールが `AGENTS.md` を追記対象として扱わない場合は、`AGENTS.md.merge.python` の内容を `AGENTS.md` の末尾へ手で追記する。
+`.claude/CLAUDE.md.merge.python` は Git_Template 側と同じ内容なので削除してよい。
