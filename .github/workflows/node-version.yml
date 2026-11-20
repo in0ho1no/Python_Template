@@ -24,7 +24,7 @@ jobs:
         id: check
         run: |
           set +e
-          python3 scripts/check_node_version.py --issue-body "$RUNNER_TEMP/node-version.md"
+          python3 scripts/check_node_version/check_node_version.py --issue-body "$RUNNER_TEMP/node-version.md"
           echo "status=$?" >> "$GITHUB_OUTPUT"
       - name: Open or update the update issue
         if: steps.check.outputs.status == '1'

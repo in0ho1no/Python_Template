@@ -12,7 +12,7 @@ from pathlib import Path
 from typing import Any, cast
 from urllib.request import urlopen
 
-ROOT = Path(__file__).resolve().parents[1]
+ROOT = Path(__file__).resolve().parents[2]
 _VERSION = re.compile(r'v?(\d+)\.(\d+)\.(\d+)')
 _PRE_RELEASE_VERSION = re.compile(r'v?\d+\.\d+\.\d+-[0-9A-Za-z.-]+')
 
