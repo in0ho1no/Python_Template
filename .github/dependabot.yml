@@ -13,6 +13,7 @@ updates:
     commit-message:
       prefix: "github-actions"
       include: "scope"
+    target-branch: "main"
 
   - package-ecosystem: "uv"
     directory: "/"
@@ -27,3 +28,4 @@ updates:
     commit-message:
       prefix: "uv"
       include: "scope"
+    target-branch: "main"
